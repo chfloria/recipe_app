@@ -1,6 +1,9 @@
 package com.smartscale.recipe_app;
 
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
@@ -9,12 +12,26 @@ import javafx.stage.Stage;
 public class RecipeApp extends Application {
     @Override
     public void start(Stage stage) throws Exception {
-        MainController mainController = new MainController();
-        mainController.setStage(stage);
-        mainController.createRecipeSteps();
-        stage.setTitle("Rezeptanleitung - Prototyp");
-        mainController.startRecipe();
+        FXMLLoader Loader = new FXMLLoader(getClass().getResource("/com/smartscale/recipe_app/recipe_select.fxml"));
+        Parent root = Loader.load();
+        RecipeSelectController controller = Loader.getController();
+
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setTitle("Smart Scale Recipe App");
         stage.show();
+
+        controller.setOnRecipeSelected(recipe -> {
+            try {
+                MainController mainController = new MainController();
+                mainController.setStage(stage);
+                mainController.loadRecipe(recipe);
+                mainController.startRecipe();
+                stage.setTitle("Rezeptanleitung" + recipe.getName());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     @Override
