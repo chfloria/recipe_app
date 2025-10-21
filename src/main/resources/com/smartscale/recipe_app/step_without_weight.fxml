@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<!--
+  step_without_weight.fxml - top-level layout.
+  - BorderPane places content in center and navigation at bottom.
+  - Controller (ControllerWithWeight.java) is set below.
+-->
+<?import javafx.scene.image.ImageView?>
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.smartscale.recipe_app.ControllerWithoutWeight">
+
+    <!-- center: instructions -->
+    <center>
+        <VBox spacing="100" alignment="CENTER">
+            <!-- Instruction Label -->
+            <Label fx:id="instructionLabel" wrapText="true" style="-fx-font-size:40px; -fx-font-weight:bold;"/>
+            <HBox spacing="50" alignment="CENTER">
+                <StackPane>
+                    <ImageView fx:id="pictureView" fitWidth="500" fitHeight="500"/>
+                </StackPane>
+            </HBox>
+        </VBox>
+    </center>
+
+    <!-- bottom: navigation buttons - large arrows left and right -->
+    <bottom>
+        <!-- FIXED: replaced padding="10" with proper Insets -->
+        <HBox spacing="10">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button fx:id="btnBack" text="←"
+                    style="-fx-font-size:60px; -fx-min-width:200px; -fx-min-height:60px; -fx-background-color:#F5C77E;"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button fx:id="btnNext" text="→"
+                    style="-fx-font-size:60px; -fx-min-width:200px; -fx-min-height:60px; -fx-background-color:#16DB65;"/>
+            <Region HBox.hgrow="ALWAYS"/>
+        </HBox>
+    </bottom>
+
+    <!-- small padding around the whole app -->
+    <padding>
+        <Insets top="12" right="12" bottom="12" left="12"/>
+    </padding>
+</BorderPane>
