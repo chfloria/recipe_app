@@ -52,7 +52,7 @@ public class RecipeStore {
 
     public static Optional<Recipe> findByName(String name) {
         return recipes.stream()
-                .filter(r -> r.getName().equalsIgnoreCase(name))
+                .filter(r -> r.name().equalsIgnoreCase(name))
                 .findFirst();
     }
 }

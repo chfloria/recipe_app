@@ -47,7 +47,7 @@ public class RecipeSelectController {
 
         if(recipeListView != null && recipeListView.getItems().isEmpty()) {
             recipeListView.setItems(FXCollections.observableList(
-                RecipeStore.getAllRecipes().stream().map(Recipe::getName).toList()
+                RecipeStore.getAllRecipes().stream().map(Recipe::name).toList()
             ));
             if (!recipeListView.getItems().isEmpty()) {
                 recipeListView.getSelectionModel().selectFirst();
@@ -62,7 +62,7 @@ public class RecipeSelectController {
     private void onStart() {
         String name = recipeListView.getSelectionModel().getSelectedItem();
         if (name == null && !recipeListView.getItems().isEmpty()) {
-            name = recipeListView.getItems().get(0);
+            name = recipeListView.getItems().getFirst();
         }
         if (name == null) return;
 

@@ -27,7 +27,7 @@ public class RecipeApp extends Application {
                 mainController.setStage(stage);
                 mainController.loadRecipe(recipe);
                 mainController.startRecipe();
-                stage.setTitle("Rezeptanleitung" + recipe.getName());
+                stage.setTitle("Rezeptanleitung" + recipe.name());
             } catch (Exception e) {
                 e.printStackTrace();
             }

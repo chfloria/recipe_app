@@ -23,7 +23,7 @@ public class MainController {
 
     public void loadRecipe(Recipe recipe) {
         steps.clear();
-        steps.addAll(recipe.getSteps());
+        steps.addAll(recipe.steps());
         stepIndex = 0;
     }
 
