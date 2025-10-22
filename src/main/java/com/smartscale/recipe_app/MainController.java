@@ -1,5 +1,6 @@
 package com.smartscale.recipe_app;
 
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -8,12 +9,17 @@ import javafx.scene.Parent;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MainController {
 
     private BorderPane root;
     public final List<RecipeStep> steps = new ArrayList<>();
     private int stepIndex = 0;
+
+    private Timer timer;
+    private TimerTask timerTask;
 
     public void setStage(Stage stage) {
         this.root = new BorderPane();
@@ -57,6 +63,15 @@ public class MainController {
     }
 
     public void showStep(RecipeStep step) {
+        if (timerTask != null) {
+            timerTask.cancel();
+            timerTask = null;
+        }
+        if(timer != null) {
+            timer.cancel();
+            timer.purge();
+            timer = null;
+        }
         try {
             FXMLLoader loader;
             Parent content;
@@ -75,6 +90,17 @@ public class MainController {
             }
 
             root.setCenter(content);
+
+            timer = new Timer(true);
+            timerTask = new TimerTask() {
+                @Override
+                public void run() {
+                    Platform.runLater(() -> {
+                        System.out.println("10 Seconds passed");
+                    });
+                }
+            };
+            timer.scheduleAtFixedRate(timerTask, 10000, 10000);
 
         } catch (Exception e) {
             e.printStackTrace();
