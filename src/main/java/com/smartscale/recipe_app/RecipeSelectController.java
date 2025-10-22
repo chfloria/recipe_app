@@ -43,6 +43,7 @@ public class RecipeSelectController {
     private void initialize() {
         if (titleLabel != null) {
             titleLabel.setText("Wähle ein Rezept");
+            titleLabel.setStyle("-fx-font-size: 50px; -fx-font-weight: bold;");
         }
 
         if(recipeListView != null && recipeListView.getItems().isEmpty()) {

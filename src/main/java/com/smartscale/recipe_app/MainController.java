@@ -60,7 +60,6 @@ public class MainController {
         try {
             FXMLLoader loader;
             Parent content;
-            // Scene scene;
             if (step.requiresWeight()) {
                 loader = new FXMLLoader(getClass().getResource("/com/smartscale/recipe_app/step_with_weight.fxml"));
                 content = loader.load();
