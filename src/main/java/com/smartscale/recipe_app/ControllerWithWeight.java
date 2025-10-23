@@ -224,14 +224,25 @@ public class ControllerWithWeight {
         double TOLERANCE_FACTOR = 0.05;
         double tol = target * TOLERANCE_FACTOR;
         if (Math.abs(weight - target) <= tol) {
-            fillRect.setFill(Color.LIGHTGREEN);
-            warningLabel.setText("");
+            fillRect.setFill(Color.GREEN);
+            warningLabel.setText("Stopp!");
+            warningLabel.setTextFill(Color.GREEN);
         } else if (weight > target) {
             fillRect.setFill(Color.RED);
             warningLabel.setText("Zu viel!");
+            warningLabel.setTextFill(Color.RED);
+        } else if (weight < 0.1 * target){
+            fillRect.setFill(Color.ORANGE);
+            warningLabel.setText("Beginn zu füllen!");
+            warningLabel.setTextFill(Color.ORANGE);
+        } else if (weight < 0.75 * target){
+            fillRect.setFill(Color.ORANGE);
+            warningLabel.setText("Gib mehr hinzu!");
+            warningLabel.setTextFill(Color.ORANGE);
         } else {
             fillRect.setFill(Color.ORANGE);
-            warningLabel.setText("");
+            warningLabel.setText("Nur noch ein wenig!");
+            warningLabel.setTextFill(Color.ORANGE);
         }
 
         weightLabel.setText(String.format("%dg", weight));
