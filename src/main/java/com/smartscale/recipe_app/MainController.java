@@ -18,8 +18,11 @@ public class MainController {
     public final List<RecipeStep> steps = new ArrayList<>();
     private int stepIndex = 0;
 
-    private Timer timer;
+    private Timer timerSpeech;
+    private Timer timerNext;
     private TimerTask timerTask;
+
+    private final TextSpeech tts = new TextSpeech();
 
     public void setStage(Stage stage) {
         this.root = new BorderPane();
@@ -67,10 +70,10 @@ public class MainController {
             timerTask.cancel();
             timerTask = null;
         }
-        if(timer != null) {
-            timer.cancel();
-            timer.purge();
-            timer = null;
+        if(timerSpeech != null) {
+            timerSpeech.cancel();
+            timerSpeech.purge();
+            timerSpeech = null;
         }
         try {
             FXMLLoader loader;
@@ -91,16 +94,20 @@ public class MainController {
 
             root.setCenter(content);
 
-            timer = new Timer(true);
+            timerSpeech = new Timer(true);
             timerTask = new TimerTask() {
                 @Override
                 public void run() {
                     Platform.runLater(() -> {
+                        String text = step.getInstruction();
+                        if (text != null && !text.isEmpty()) {
+                            new Thread(() -> tts.speak(text)).start();
+                        }
                         System.out.println("10 Seconds passed");
                     });
                 }
             };
-            timer.scheduleAtFixedRate(timerTask, 10000, 10000);
+            timerSpeech.scheduleAtFixedRate(timerTask, 10000, 10000);
 
         } catch (Exception e) {
             e.printStackTrace();
