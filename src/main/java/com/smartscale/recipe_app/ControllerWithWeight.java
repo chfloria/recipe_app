@@ -46,6 +46,7 @@ public class ControllerWithWeight {
     @FXML private Button btnTare;
     @FXML private Button btnBack;
     @FXML private Button btnNext;
+    @FXML private Button btnSpeak;
 
     private ScaleService scaleService;
     private MainController mainController;
@@ -83,6 +84,8 @@ public class ControllerWithWeight {
                 ex.printStackTrace();
             }
         });
+
+        btnSpeak.setOnAction(e -> onSpeak(currentStep));
 
         // Small initial state
         weightLabel.setText("");
@@ -164,6 +167,11 @@ public class ControllerWithWeight {
             ex.printStackTrace();
         }
         mainController.showNext();
+    }
+
+    public  void onSpeak(RecipeStep step) {
+        this.currentStep = step;
+        mainController.speakstep(step.getInstruction());
     }
 
     /**

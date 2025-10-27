@@ -16,8 +16,10 @@ public class ControllerWithoutWeight {
     @FXML private ImageView pictureView;
     @FXML private Button btnBack;
     @FXML private Button btnNext;
+    @FXML private Button btnSpeak;
 
     private MainController mainController;
+    private RecipeStep currentStep;
 
     public void setMainController(MainController controller) {this.mainController = controller;}
 
@@ -33,6 +35,7 @@ public class ControllerWithoutWeight {
         // Initialize UI controls
         btnBack.setOnAction(e -> onBack());
         btnNext.setOnAction(e -> onNext());
+        btnSpeak.setOnAction(e -> onSpeak(currentStep));
     }
 
     /** Go to previous step */
@@ -45,11 +48,17 @@ public class ControllerWithoutWeight {
         mainController.showNext();
     }
 
+    public  void onSpeak(RecipeStep step) {
+        this.currentStep = step;
+        mainController.speakstep(step.getInstruction());
+    }
+
     /**
      * Display the step at index and update which UI elements are visible.
      * If the step requires weight, show the circle and controls; otherwise hide them.
      */
     public void showStepwithoutWeight(RecipeStep step) {
+        this.currentStep = step;
         instructionLabel.setText(step.getInstruction());
         // load image if available
         if (step.imagePath() != null && !step.imagePath().isEmpty()) {

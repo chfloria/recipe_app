@@ -22,7 +22,7 @@ public class MainController {
     private Timer timerNext;
     private TimerTask timerTask;
 
-    private final TextSpeech tts = new TextSpeech();
+    // private final TextSpeech tts = new TextSpeech();
 
     public void setStage(Stage stage) {
         this.root = new BorderPane();
@@ -63,6 +63,16 @@ public class MainController {
             stepIndex++;
             showStep(steps.get(stepIndex));
         }
+    }
+
+    public void speakstep(String text) {
+        new Thread(() -> {
+            try {
+                TextSpeech.speak(text);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }).start();
     }
 
     public void showStep(RecipeStep step) {
@@ -109,11 +119,11 @@ public class MainController {
                                 }
                             }).start();
                         }
-                        System.out.println("10 Seconds passed");
+                        // System.out.println("10 Seconds passed");
                     });
                 }
             };
-            timerSpeech.scheduleAtFixedRate(timerTask, 10000, 10000);
+            timerSpeech.scheduleAtFixedRate(timerTask, 60000, 60000);
 
         } catch (Exception e) {
             e.printStackTrace();

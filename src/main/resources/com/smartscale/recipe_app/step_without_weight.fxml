@@ -15,9 +15,11 @@
 
     <!-- center: instructions -->
     <center>
-        <VBox spacing="100" alignment="CENTER">
+        <VBox spacing="40" alignment="CENTER">
             <!-- Instruction Label -->
             <Label fx:id="instructionLabel" wrapText="true" style="-fx-font-size:40px; -fx-font-weight:bold;"/>
+            <Button fx:id="btnSpeak" text="🔊"
+                    style="-fx-font-size:40px; -fx-min-width:80px; -fx-min-height:80px; -fx-background-color:#FFF3B0;"/>
             <HBox spacing="50" alignment="CENTER">
                 <StackPane>
                     <ImageView fx:id="pictureView" fitWidth="500" fitHeight="500"/>

@@ -40,16 +40,16 @@ public class TextSpeech {
         // Start und Ende überwachen
         mediaPlayer.setOnReady(() -> {
             mediaPlayer.play();
-            System.out.println("🔊 Starte Wiedergabe: " + text);
+            // System.out.println("🔊 Starte Wiedergabe: " + text);
         });
 
         mediaPlayer.setOnEndOfMedia(() -> {
-            System.out.println("✅ Wiedergabe abgeschlossen");
+            // System.out.println("✅ Wiedergabe abgeschlossen");
             mediaPlayer.dispose();
             mp3File.delete(); // temporäre Datei löschen
         });
 
         // Optional: Warte, bis Wiedergabe abgeschlossen ist
-        Thread.sleep((long) (text.split(" ").length * 400)); // grober Richtwert
+        Thread.sleep((long) (text.split(" ").length * 500)); // grober Richtwert
     }
 }
