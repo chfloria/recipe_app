@@ -18,6 +18,8 @@ import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.LineTo;
 
 import java.util.ArrayDeque;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Controller for step_with_weight.fxml
@@ -62,6 +64,9 @@ public class ControllerWithWeight {
     private final double WIDTH = 200;
     private final double HEIGHT = WIDTH * 1.5;
     private final double HEIGHT_BIG = HEIGHT * 1.5;
+
+    private Timer timerWeight;
+    private TimerTask timerTaskWeight;
 
     /**
      * initialize() is called by the FXMLLoader after the FXML nodes are injected.
@@ -178,6 +183,15 @@ public class ControllerWithWeight {
      * If the step requires weight, show the circle and controls; otherwise hide them.
      */
     public void showStepwithWeight(RecipeStep step) {
+        if (timerTaskWeight != null) {
+            timerTaskWeight.cancel();
+            timerTaskWeight = null;
+        }
+        if(timerWeight != null) {
+            timerWeight.cancel();
+            timerWeight.purge();
+            timerWeight = null;
+        }
         this.currentStep = step;
         instructionLabel.setText(step.getInstruction());
         // load image if available
@@ -190,6 +204,27 @@ public class ControllerWithWeight {
         warningLabel.setText("");
         btnBack.setVisible(step.getStepNumber() > 0);
         btnNext.setVisible(step.getStepNumber() < mainController.steps.size() - 1);
+
+        timerWeight = new Timer(true);
+        timerTaskWeight = new TimerTask() {
+            @Override
+            public void run() {
+                Platform.runLater(() -> {
+                    String text = warningLabel.getText();
+                    if (text != null && !text.isEmpty()) {
+                        new Thread(() -> {
+                            try {
+                                TextSpeech.speak(text);
+                            } catch (Exception e) {
+                                throw new RuntimeException(e);
+                            }
+                        }).start();
+                    }
+                    // System.out.println("Füll Instruktion ausgegeben");
+                });
+            }
+        };
+        timerWeight.scheduleAtFixedRate(timerTaskWeight, 10000, 30000);
     }
 
     /**

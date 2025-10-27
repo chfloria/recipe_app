@@ -18,11 +18,8 @@ public class MainController {
     public final List<RecipeStep> steps = new ArrayList<>();
     private int stepIndex = 0;
 
-    private Timer timerSpeech;
-    private Timer timerNext;
-    private TimerTask timerTask;
-
-    // private final TextSpeech tts = new TextSpeech();
+    private Timer timerInstruction;
+    private TimerTask timerTaskInstruction;
 
     public void setStage(Stage stage) {
         this.root = new BorderPane();
@@ -66,6 +63,7 @@ public class MainController {
     }
 
     public void speakstep(String text) {
+
         new Thread(() -> {
             try {
                 TextSpeech.speak(text);
@@ -76,14 +74,14 @@ public class MainController {
     }
 
     public void showStep(RecipeStep step) {
-        if (timerTask != null) {
-            timerTask.cancel();
-            timerTask = null;
+        if (timerTaskInstruction != null) {
+            timerTaskInstruction.cancel();
+            timerTaskInstruction = null;
         }
-        if(timerSpeech != null) {
-            timerSpeech.cancel();
-            timerSpeech.purge();
-            timerSpeech = null;
+        if(timerInstruction != null) {
+            timerInstruction.cancel();
+            timerInstruction.purge();
+            timerInstruction = null;
         }
         try {
             FXMLLoader loader;
@@ -104,8 +102,8 @@ public class MainController {
 
             root.setCenter(content);
 
-            timerSpeech = new Timer(true);
-            timerTask = new TimerTask() {
+            timerInstruction = new Timer(true);
+            timerTaskInstruction = new TimerTask() {
                 @Override
                 public void run() {
                     Platform.runLater(() -> {
@@ -123,7 +121,7 @@ public class MainController {
                     });
                 }
             };
-            timerSpeech.scheduleAtFixedRate(timerTask, 60000, 60000);
+            timerInstruction.scheduleAtFixedRate(timerTaskInstruction, 0, 60000);
 
         } catch (Exception e) {
             e.printStackTrace();
