@@ -48,7 +48,7 @@ public class ControllerWithoutWeight {
         mainController.showNext();
     }
 
-    public  void onSpeak(RecipeStep step) {
+    private void onSpeak(RecipeStep step) {
         this.currentStep = step;
         mainController.speakstep(step.getInstruction());
     }
