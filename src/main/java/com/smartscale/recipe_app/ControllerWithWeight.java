@@ -46,7 +46,6 @@ public class ControllerWithWeight {
     @FXML private Button btnTare;
     @FXML private Button btnBack;
     @FXML private Button btnNext;
-    @FXML private Button btnSpeak;
 
     private ScaleService scaleService;
     private MainController mainController;
@@ -84,8 +83,6 @@ public class ControllerWithWeight {
                 ex.printStackTrace();
             }
         });
-
-        btnSpeak.setOnAction(e -> onSpeak(currentStep));
 
         // Small initial state
         weightLabel.setText("");
@@ -169,11 +166,6 @@ public class ControllerWithWeight {
         mainController.showNext();
     }
 
-    public  void onSpeak(RecipeStep step) {
-        this.currentStep = step;
-        mainController.speakstep(step.getInstruction());
-    }
-
     /**
      * Display the step at index and update which UI elements are visible.
      * If the step requires weight, show the circle and controls; otherwise hide them.
@@ -232,25 +224,14 @@ public class ControllerWithWeight {
         double TOLERANCE_FACTOR = 0.05;
         double tol = target * TOLERANCE_FACTOR;
         if (Math.abs(weight - target) <= tol) {
-            fillRect.setFill(Color.GREEN);
-            warningLabel.setText("Stopp!");
-            warningLabel.setTextFill(Color.GREEN);
+            fillRect.setFill(Color.LIGHTGREEN);
+            warningLabel.setText("");
         } else if (weight > target) {
             fillRect.setFill(Color.RED);
             warningLabel.setText("Zu viel!");
-            warningLabel.setTextFill(Color.RED);
-        } else if (weight < 0.1 * target){
-            fillRect.setFill(Color.ORANGE);
-            warningLabel.setText("Beginn zu füllen!");
-            warningLabel.setTextFill(Color.ORANGE);
-        } else if (weight < 0.75 * target){
-            fillRect.setFill(Color.ORANGE);
-            warningLabel.setText("Gib mehr hinzu!");
-            warningLabel.setTextFill(Color.ORANGE);
         } else {
             fillRect.setFill(Color.ORANGE);
-            warningLabel.setText("Noch ein wenig!");
-            warningLabel.setTextFill(Color.ORANGE);
+            warningLabel.setText("");
         }
 
         weightLabel.setText(String.format("%dg", weight));
