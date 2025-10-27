@@ -249,7 +249,7 @@ public class ControllerWithWeight {
             warningLabel.setTextFill(Color.ORANGE);
         } else {
             fillRect.setFill(Color.ORANGE);
-            warningLabel.setText("Nur noch ein wenig!");
+            warningLabel.setText("Noch ein wenig!");
             warningLabel.setTextFill(Color.ORANGE);
         }
 
