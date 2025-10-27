@@ -12,6 +12,8 @@ module com.smartscale.recipe_app {
     requires phidget22;
     requires jdk.compiler;
     requires freetts;
+    requires javafx.swing;
+    requires javafx.media;
 
     opens com.smartscale.recipe_app to javafx.fxml;
     exports com.smartscale.recipe_app;

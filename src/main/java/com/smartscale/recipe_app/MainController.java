@@ -101,7 +101,13 @@ public class MainController {
                     Platform.runLater(() -> {
                         String text = step.getInstruction();
                         if (text != null && !text.isEmpty()) {
-                            new Thread(() -> tts.speak(text)).start();
+                            new Thread(() -> {
+                                try {
+                                    TextSpeech.speak(text);
+                                } catch (Exception e) {
+                                    throw new RuntimeException(e);
+                                }
+                            }).start();
                         }
                         System.out.println("10 Seconds passed");
                     });
