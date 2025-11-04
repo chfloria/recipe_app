@@ -69,13 +69,13 @@ public class RecipeStore {
         pommesgewuerz.add(new RecipeStep("Hole Curry Pulver.", 0, "/images/curry.jpg", 5));
         pommesgewuerz.add(new RecipeStep("Hole kleine Schüssel.", 0, "/images/schussel.png", 6));
         pommesgewuerz.add(new RecipeStep("Hole Schwingbesen.", 0, "/images/schwingbesen_hand.jpg", 7));
-        pommesgewuerz.add(new RecipeStep("Messe 1000 Gramm Salz mit der Waage ab.", 1000, "/images/salz.jpg", 9));
-        pommesgewuerz.add(new RecipeStep("Messe 100 Gramm Paprika Pulver mit der Waage ab.", 100, "/images/paprikapulver.jpg", 10));
-        pommesgewuerz.add(new RecipeStep("Messe 15 Gramm Pfeffer mit der Waage ab.", 15, "/images/pfeffer.jpg", 11));
-        pommesgewuerz.add(new RecipeStep("Messe 15 Gramm Muskatnuss mit der Waage ab.", 15, "/images/muskatnuss.jpg", 12));
-        pommesgewuerz.add(new RecipeStep("Messe 15 Gramm Rosmarin Pulver mit der Waage ab.", 15, "/images/rosmarin.jpg", 13));
-        pommesgewuerz.add(new RecipeStep("Messe 50 Gramm Curry Pulver mit der Waage ab.", 50, "/images/curry.jpg", 14));
-        pommesgewuerz.add(new RecipeStep("Vermische alles mit dem Schwingbesen.", 0, "/images/umruhren.jpg", 15));
+        pommesgewuerz.add(new RecipeStep("Messe 1000 Gramm Salz mit der Waage ab.", 1000, "/images/salz.jpg", 8));
+        pommesgewuerz.add(new RecipeStep("Messe 100 Gramm Paprika Pulver mit der Waage ab.", 100, "/images/paprikapulver.jpg", 9));
+        pommesgewuerz.add(new RecipeStep("Messe 15 Gramm Pfeffer mit der Waage ab.", 15, "/images/pfeffer.jpg", 10));
+        pommesgewuerz.add(new RecipeStep("Messe 15 Gramm Muskatnuss mit der Waage ab.", 15, "/images/muskatnuss.jpg", 11));
+        pommesgewuerz.add(new RecipeStep("Messe 15 Gramm Rosmarin Pulver mit der Waage ab.", 15, "/images/rosmarin.jpg", 12));
+        pommesgewuerz.add(new RecipeStep("Messe 50 Gramm Curry Pulver mit der Waage ab.", 50, "/images/curry.jpg", 13));
+        pommesgewuerz.add(new RecipeStep("Vermische alles mit dem Schwingbesen.", 0, "/images/umruhren.jpg", 14));
         recipes.add(new Recipe("Pommes Gewürz", pommesgewuerz));
     }
 
