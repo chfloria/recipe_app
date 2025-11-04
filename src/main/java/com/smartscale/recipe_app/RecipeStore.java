@@ -59,6 +59,25 @@ public class RecipeStore {
         focciacia.add(new RecipeStep("Gib 750 Gramm Mehl in die Schüssel.", 750, "/images/mehl.jpg", 2));
         focciacia.add(new RecipeStep("Gib 15 Gramm Salz in die Schüssel", 15, "/images/salz.jpg", 3));
         recipes.add(new Recipe("Focciacia", focciacia));
+
+        List<RecipeStep> pommesgewuerz = new ArrayList<>();
+        pommesgewuerz.add(new RecipeStep("Hole Salz.", 0, "", 0));
+        pommesgewuerz.add(new RecipeStep("Hole Paprika Pulver.", 0, "", 1));
+        pommesgewuerz.add(new RecipeStep("Hole Pfeffer.", 0, "", 2));
+        pommesgewuerz.add(new RecipeStep("Hole Muskatnuss.", 0, "", 3));
+        pommesgewuerz.add(new RecipeStep("Hole Rosmarin Pulver.", 0, "", 4));
+        pommesgewuerz.add(new RecipeStep("Hole Curry Pulver.", 0, "", 5));
+        pommesgewuerz.add(new RecipeStep("Hole kleine Schüssel.", 0, "", 6));
+        pommesgewuerz.add(new RecipeStep("Hole Schwingbesen.", 0, "", 7));
+        pommesgewuerz.add(new RecipeStep("Hole Waage.", 0, "", 8));
+        pommesgewuerz.add(new RecipeStep("Messe 1000 Gramm Salz mit der Waage ab.", 1000, "", 9));
+        pommesgewuerz.add(new RecipeStep("Messe 100 Gramm Paprika Pulver mit der Waage ab.", 100, "", 10));
+        pommesgewuerz.add(new RecipeStep("Messe 15 Gramm Pfeffer mit der Waage ab.", 15, "", 11));
+        pommesgewuerz.add(new RecipeStep("Messe 15 Gramm Muskatnuss mit der Waage ab.", 15, "", 12));
+        pommesgewuerz.add(new RecipeStep("Messe 15 Gramm Rosmarin Pulver mit der Waage ab.", 15, "", 13));
+        pommesgewuerz.add(new RecipeStep("Messe 50 Gramm Curry Pulver mit der Waage ab.", 50, "", 14));
+        pommesgewuerz.add(new RecipeStep("Vermische alles mit dem Schwingbesen.", 0, "", 15));
+        recipes.add(new Recipe("Pommes Gewürz", pommesgewuerz));
     }
 
     public static List<Recipe> getAllRecipes() {
